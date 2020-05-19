@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kamer{% endblock %}
+
+{% block body %}
+    <h1>Kamer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ kamer.id }}</td>
+            </tr>
+            <tr>
+                <th>Room_nr</th>
+                <td>{{ kamer.roomNr }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ kamer.price }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ kamer.description }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ kamer.name }}</td>
+            </tr>
+            <tr>
+                <th>Bed</th>
+                <td>{{ kamer.bed }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('kamer_index') }}">back to list</a>
+
+    <a href="{{ path('kamer_edit', {'id': kamer.id}) }}">edit</a>
+
+    {{ include('kamer/_delete_form.html.twig') }}
+{% endblock %}
