@@ -18,14 +18,14 @@ class Reservering
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Kamer::class)
+     * @ORM\ManyToOne(targetEntity=Kamer::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $kamer;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class)
-     * @ORM\JoinColumn(nullable=false, name="user_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity=User::class,  cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
