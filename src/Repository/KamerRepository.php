@@ -3,7 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Kamer;
+use App\Entity\Image;
+use App\Entity\Soort;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -22,19 +25,19 @@ class KamerRepository extends ServiceEntityRepository
     // /**
     //  * @return Kamer[] Returns an array of Kamer objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findWithImage()
     {
-        return $this->createQueryBuilder('k')
-            ->andWhere('k.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('k.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $sql = "SELECT * from kamer INNER JOIN soort on kamer.soort_id = soort.id INNER JOIN image ON kamer.id = image.kamer_id";
+        return $this->getEntityManager()->getConnection()->executeQuery($sql)->fetchAll();
+
     }
-    */
+
+    public function findWithImageWhere($value){
+        $sql = "SELECT * from kamer INNER JOIN soort on kamer.soort_id = soort.id INNER JOIN image ON kamer.id = image.kamer_id WHERE kamer.id =" . $value;
+        return $this->getEntityManager()->getConnection()->executeQuery($sql)->fetchAll();
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Kamer

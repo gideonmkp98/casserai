@@ -25,7 +25,7 @@ class Reservering
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, name="user_id", referencedColumnName="id")
      */
     private $user;
 
